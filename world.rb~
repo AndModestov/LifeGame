@@ -75,6 +75,16 @@ class World
     alive_neighbours
   end
 
+  def start_life
+    #reading the start text file
+    alive_coordinates = File.readlines('start.txt').map{|line| line.chomp.split(/,/)}
+    #coordinates to massive element num
+    alive_coordinates.map!{|i| i = i[1].to_i * @cols + i[0].to_i}
+    alive_coordinates.each do |coord|
+      cells[coord].alive = true
+    end
+  end
+
   def live_cells
     cells.select { |cell| cell.alive }
   end

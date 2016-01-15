@@ -51,8 +51,8 @@ class GameWindow < Gosu::Window
         alivecells << [col+1, row+1] if alive_coordinates[row][col] == "1"
       end  
     end
-    alivecells.map!{|i| i = i[1].to_i * @cols_num + i[0].to_i}
-    alivecells.each do |coord|
+    livecells.map!{|i| i = i[1].to_i * @cols_num + i[0].to_i}
+    livecells.each do |coord|
       @game.world.cells[coord].alive = true
     end
   end
